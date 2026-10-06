@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dongryeol Lee</title>
+<meta name="description" content="Dongryeol Lee — undergraduate researcher at UNIST IMML Lab working on VLA models, world models, and preference-aligned diffusion policies.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#fbfbf9;--fg:#1c1c1c;--muted:#6b6b6b;--line:#e6e4df;--accent:#2f5d8a;}
+  @media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#e8e8e6;--muted:#9a9a96;--line:#2a2a2a;--accent:#7fb0e0;}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif}
+  main{max-width:740px;margin:0 auto;padding:64px 20px 80px}
+  h1{font-family:"Source Serif 4",serif;font-size:2.1rem;margin:0 0 4px;letter-spacing:-.01em}
+  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:48px 0 12px;font-weight:600}
+  .sub{color:var(--muted);margin:0 0 20px}
+  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+  .links{display:flex;flex-wrap:wrap;gap:16px;font-size:.95rem}
+  .item{padding:16px 0;border-top:1px solid var(--line)}
+  .item:last-child{border-bottom:1px solid var(--line)}
+  .t{font-weight:600}
+  .meta{color:var(--muted);font-size:.9rem}
+  .desc{font-size:.93rem;margin-top:6px}
+  .tag{display:inline-block;font-size:.72rem;padding:1px 8px;border:1px solid var(--line);border-radius:99px;color:var(--muted);margin-left:6px;vertical-align:2px;font-weight:500}
+  ul{padding-left:18px;margin:6px 0 0} li{margin:3px 0}
+  .news{display:grid;grid-template-columns:84px 1fr;gap:4px 12px;font-size:.95rem}
+  .news .d{color:var(--muted)}
+  footer{margin-top:56px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>Dongryeol Lee</h1>
+  <p class="sub">이동렬 · Undergraduate Researcher, Computer Science and Engineering (AI Track), UNIST</p>
+  <div class="links">
+    <a href="mailto:dong1128@unist.ac.kr">Email</a>
+    <a href="https://github.com/dongryeol-lee">GitHub</a>
+    <a href="cv.pdf">CV</a>
+  </div>
+
+  <h2>About</h2>
+  <p>I'm an undergraduate in Computer Science and Engineering (AI Track) at UNIST with a minor in Business Administration, and a research intern at the <a href="#">Interactive Multimodal Machine Learning Lab (IMML)</a> advised by Prof. Taehwan Kim.</p>
+  <p>My work centers on embodied AI: aligning generative robot policies with physical safety, and understanding why gains measured at the proposal level don't always survive closed-loop execution.</p>
+
+  <h2>News</h2>
+  <div class="news">
+    <div class="d">Sep 2026</div><div>SafeCine accepted as a poster at the 8th Robot Learning Workshop, NeurIPS 2026.</div>
+    <div class="d">Apr 2026</div><div>Joined IMML Lab at UNIST as an undergraduate research intern.</div>
+  </div>
+
+  <h2>Research Interests</h2>
+  <ul>
+    <li><strong>Vision-Language-Action models &amp; embodied AI</strong> — grounded multimodal reasoning, closed-loop decision policies, spatial cognition</li>
+    <li><strong>World models</strong> — generative dynamics, physics-grounded representations, simulation and sim-to-real transfer</li>
+    <li><strong>Foundation models</strong> — VLMs, diffusion-based trajectory generation, and how long-lived AI systems absorb replaced components such as encoders and world models</li>
+  </ul>
+
+  <h2>Publications</h2>
+  <div class="item">
+    <div class="t">SafeCine: Risk-Calibrated Physical Preference Supervision for Language-Conditioned Aerial Cinematography <span class="tag">Poster</span></div>
+    <div class="meta"><strong>Dongryeol Lee</strong>, Jaeyeon Bae, Taehwan Kim</div>
+    <div class="meta">8th Robot Learning Workshop at NeurIPS 2026 · non-archival</div>
+    <!-- <div class="meta"><a href="#">Paper</a> · <a href="#">Code</a></div> -->
+  </div>
+
+  <h2>Research Experience</h2>
+  <div class="item">
+    <div class="t">IMML Lab, UNIST — Undergraduate Research Intern</div>
+    <div class="meta">Advisor: Prof. Taehwan Kim · Apr 2026 – Present</div>
+    <ul class="desc">
+      <li><strong>RCL-CPM:</strong> Risk-Calibrated Local Counterfactual Preference Mining — compares candidate trajectories under matched physical perturbations and keeps only pairs resolved by Wilson 95% bounds, for DPO-style alignment of a diffusion proposal policy for language-conditioned camera drones.</li>
+      <li><strong>Isaac Sim benchmark:</strong> Closed-loop physical evaluation across 8 scene families in Isaac Sim 4.5 / PhysX. Candidate clearance q0.05 improved 0.391 m → 0.501 m (+0.110 m), tested with parent-stratified bootstrap and exact McNemar tests.</li>
+      <li><strong>Negative result, reported honestly:</strong> the full closed-loop system did not show the expected gain. This proposal–execution gap motivates ongoing follow-up work.</li>
+    </ul>
+  </div>
+
+  <h2>Selected Projects</h2>
+  <div class="item">
+    <div class="t">Drive-CoT: Explainable Multimodal Action Generation via Linguistic Mediation</div>
+    <div class="meta">Lead Developer · NLP course research project · May – Jun 2026</div>
+    <div class="desc">Chain-of-thought spatial rationales before action tokens in LLaVA-1.5-7B (LoRA), trained on 10K synthesized pairs from BDD100K/BDD-X. Action accuracy 51.0% → 77.5%; minority STOP-class F1 0.75.</div>
+  </div>
+  <div class="item">
+    <div class="t">Project N.E.O. — Multi-Agent Pipeline for National Statistics</div>
+    <div class="meta">Core AI Agent Architecture Engineer · UNIST AICP · Jun 2026</div>
+    <div class="desc">AutoGen-based pipeline for KOSIS data ingestion, schema validation, and insight synthesis, with cross-agent verification for factual consistency.</div>
+  </div>
+  <div class="item">
+    <div class="t">Uncertainty-Guided Monocular Depth Estimation for Embodied Perception</div>
+    <div class="meta">Team project · Machine Learning · May – Jun 2026</div>
+    <div class="desc">Epistemic and aleatoric uncertainty modeling to filter noisy depth under dynamic robot camera motion.</div>
+  </div>
+  <div class="item">
+    <div class="t">Variance-Aware Thompson Sampling</div>
+    <div class="meta">Basic Mathematics for AI · Spring 2026</div>
+    <div class="desc">Bessel-corrected variance with a variance floor against early exploration collapse. Ranked 1st on all five benchmark environments in the class.</div>
+  </div>
+
+  <h2>Education</h2>
+  <div class="item">
+    <div class="t">Ulsan National Institute of Science and Technology (UNIST)</div>
+    <div class="meta">B.S. Computer Science and Engineering (AI Track) · Minor in Business Administration · Mar 2022 – Feb 2028 (expected)</div>
+  </div>
+
+  <h2>Skills</h2>
+  <div class="desc">Python, C/C++, PyTorch, Hugging Face (Transformers, PEFT/LoRA), NVIDIA Isaac Sim / PhysX, diffusion policies, DPO-style preference optimization, AutoGen, Docker, W&amp;B</div>
+
+  <footer>Last updated October 2026</footer>
+</main>
+</body>
+</html>
