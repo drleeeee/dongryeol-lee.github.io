@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dongryeol Lee</title>
-<meta name="description" content="Dongryeol Lee — undergraduate researcher at UNIST IMML Lab working on VLA models, world models, and preference-aligned diffusion policies.">
+<meta name="description" content="Dongryeol Lee — undergraduate researcher at UNIST IMML Lab working on embodied AI: VLA models, world models, and preference-aligned diffusion policies.">
+<meta property="og:title" content="Dongryeol Lee">
+<meta property="og:description" content="Undergraduate researcher at UNIST (IMML Lab). Embodied AI, world models, VLA.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%232f5d8a%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Georgia,serif%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EDL%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#fbfbf9;--fg:#1c1c1c;--muted:#6b6b6b;--line:#e6e4df;--accent:#2f5d8a;}
@@ -26,6 +29,8 @@
   ul{padding-left:18px;margin:6px 0 0} li{margin:3px 0}
   .news{display:grid;grid-template-columns:84px 1fr;gap:4px 12px;font-size:.95rem}
   .news .d{color:var(--muted)}
+  .lead{font-size:1.05rem;margin:0 0 12px}
+  .status{color:var(--muted);font-size:.9rem;font-style:italic}
   footer{margin-top:56px;color:var(--muted);font-size:.85rem}
 </style>
 </head>
@@ -40,11 +45,16 @@
   </div>
 
   <h2>About</h2>
+  <p class="lead"><strong>I work on embodied AI that has to act in the physical world</strong> — aligning generative robot policies with physical safety, and understanding why gains measured on proposals do not always survive closed-loop execution.</p>
   <p>I'm an undergraduate in Computer Science and Engineering (AI Track) at UNIST with a minor in Business Administration, and a research intern at the <a href="https://sites.google.com/view/imml-lab/" target="_blank" rel="noopener">Interactive Multimodal Machine Learning Lab (IMML)</a> advised by <a href="https://sites.google.com/view/taehwankim" target="_blank" rel="noopener">Prof. Taehwan Kim</a>.</p>
-  <p>My work centers on embodied AI: aligning generative robot policies with physical safety, and understanding why gains measured at the proposal level don't always survive closed-loop execution.</p>
+  <p class="status">Applying to research-focused M.S. programs for Fall 2028.</p>
 
   <h2>News</h2>
   <div class="news">
+    <!-- ADD NEWS: newest first
+    <div class="d">Mon YYYY</div><div>What happened.</div>
+    -->
+    <div class="d">Dec 2026</div><div>SafeCine poster at the 8th Robot Learning Workshop, NeurIPS 2026 (Sydney).</div>
     <div class="d">Sep 2026</div><div>SafeCine accepted as a poster at the 8th Robot Learning Workshop, NeurIPS 2026.</div>
     <div class="d">Dec 2025</div><div>Joined IMML Lab at UNIST as an undergraduate research intern.</div>
   </div>
@@ -57,11 +67,19 @@
   </ul>
 
   <h2>Publications</h2>
+  <!-- ADD PUBLICATION: copy this block above the newest one. Tag: Conference / Workshop / Poster / Preprint
+  <div class="item">
+    <div class="t">Paper Title <span class="tag">Conference</span></div>
+    <div class="meta"><strong>Dongryeol Lee</strong>, Coauthor, Advisor</div>
+    <div class="meta">Venue Year</div>
+    <div class="meta"><a href="#">Paper</a> · <a href="#">Code</a> · <a href="#">Project page</a></div>
+  </div>
+  -->
   <div class="item">
     <div class="t">SafeCine: Risk-Calibrated Physical Preference Supervision for Language-Conditioned Aerial Cinematography <span class="tag">Poster</span></div>
     <div class="meta"><strong>Dongryeol Lee</strong>, Jaeyeon Bae, Taehwan Kim</div>
     <div class="meta">8th Robot Learning Workshop at NeurIPS 2026 · non-archival</div>
-    <!-- <div class="meta"><a href="#">Paper</a> · <a href="#">Code</a></div> -->
+    <div class="meta"><a href="https://openreview.net/forum?id=IhmxxZLjha" target="_blank" rel="noopener">OpenReview</a></div>
   </div>
 
   <h2>Research Experience</h2>
@@ -76,6 +94,13 @@
   </div>
 
   <h2>Selected Projects</h2>
+  <!-- ADD PROJECT: copy this block. Keep 2-3 strongest only.
+  <div class="item">
+    <div class="t">Project Title</div>
+    <div class="meta">Role · Context · Mon – Mon YYYY</div>
+    <div class="desc">One or two sentences with the key result number.</div>
+  </div>
+  -->
   <div class="item">
     <div class="t">Drive-CoT: Explainable Multimodal Action Generation via Linguistic Mediation</div>
     <div class="meta">Lead Developer · NLP course research project · May – Jun 2026</div>
@@ -85,16 +110,6 @@
     <div class="t">Project N.E.O. — Multi-Agent Pipeline for National Statistics</div>
     <div class="meta">Core AI Agent Architecture Engineer · UNIST AICP · Jun 2026</div>
     <div class="desc">AutoGen-based pipeline for KOSIS data ingestion, schema validation, and insight synthesis, with cross-agent verification for factual consistency.</div>
-  </div>
-  <div class="item">
-    <div class="t">Uncertainty-Guided Monocular Depth Estimation for Embodied Perception</div>
-    <div class="meta">Team project · Machine Learning · May – Jun 2026</div>
-    <div class="desc">Epistemic and aleatoric uncertainty modeling to filter noisy depth under dynamic robot camera motion.</div>
-  </div>
-  <div class="item">
-    <div class="t">Variance-Aware Thompson Sampling</div>
-    <div class="meta">Basic Mathematics for AI · Spring 2026</div>
-    <div class="desc">Bessel-corrected variance with a variance floor against early exploration collapse. Ranked 1st on all five benchmark environments in the class.</div>
   </div>
 
   <h2>Education</h2>
@@ -106,7 +121,7 @@
   <h2>Skills</h2>
   <div class="desc">Python, C/C++, PyTorch, Hugging Face (Transformers, PEFT/LoRA), NVIDIA Isaac Sim / PhysX, diffusion policies, DPO-style preference optimization, AutoGen, Docker, W&amp;B</div>
 
-  <footer>Last updated October 2026</footer>
+  <footer>Last updated November 2026</footer>
 </main>
 </body>
 </html>
