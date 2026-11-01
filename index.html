@@ -4,124 +4,489 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dongryeol Lee</title>
-<meta name="description" content="Dongryeol Lee — undergraduate researcher at UNIST IMML Lab working on embodied AI: VLA models, world models, and preference-aligned diffusion policies.">
+<meta name="description" content="Dongryeol Lee, undergraduate researcher at UNIST IMML Lab working on embodied AI: VLA models, world models, and preference-aligned diffusion policies for camera drones.">
 <meta property="og:title" content="Dongryeol Lee">
 <meta property="og:description" content="Undergraduate researcher at UNIST (IMML Lab). Embodied AI, world models, VLA.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%232f5d8a%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Georgia,serif%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EDL%3C/text%3E%3C/svg%3E">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#eef2f4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314232f'/%3E%3Cpath d='M6 22 C12 8, 20 8, 26 18' stroke='%2337b3b9' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='18' r='3' fill='%23f2b33d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&text=%EC%9D%B4%EB%8F%99%EB%A0%AC&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#fbfbf9;--fg:#1c1c1c;--muted:#6b6b6b;--line:#e6e4df;--accent:#2f5d8a;}
-  @media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#e8e8e6;--muted:#9a9a96;--line:#2a2a2a;--accent:#7fb0e0;}}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 Inter,system-ui,sans-serif}
-  main{max-width:740px;margin:0 auto;padding:64px 20px 80px}
-  h1{font-family:"Source Serif 4",serif;font-size:2.1rem;margin:0 0 4px;letter-spacing:-.01em}
-  h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:48px 0 12px;font-weight:600}
-  .sub{color:var(--muted);margin:0 0 20px}
-  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-  .links{display:flex;flex-wrap:wrap;gap:16px;font-size:.95rem}
-  .item{padding:16px 0;border-top:1px solid var(--line)}
-  .item:last-child{border-bottom:1px solid var(--line)}
-  .t{font-weight:600}
-  .meta{color:var(--muted);font-size:.9rem}
-  .desc{font-size:.93rem;margin-top:6px}
-  .tag{display:inline-block;font-size:.72rem;padding:1px 8px;border:1px solid var(--line);border-radius:99px;color:var(--muted);margin-left:6px;vertical-align:2px;font-weight:500}
-  ul{padding-left:18px;margin:6px 0 0} li{margin:3px 0}
-  .news{display:grid;grid-template-columns:84px 1fr;gap:4px 12px;font-size:.95rem}
-  .news .d{color:var(--muted)}
-  .lead{font-size:1.05rem;margin:0 0 12px}
-  .status{color:var(--muted);font-size:.9rem;font-style:italic}
-  footer{margin-top:56px;color:var(--muted);font-size:.85rem}
+/* ---------- tokens ---------- */
+:root{
+  --bg:#eef2f4; --surface:#f8fafb; --ink:#14232f; --muted:#5a6b78; --line:#cdd6dd;
+  --safe:#0f7c84; --safe-soft:#cfe8ea; --risk:#c98a00; --risk-soft:#f6e3b4; --link:#0f6a8f;
+  --grid:#dfe6eb;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1a22; --surface:#15232e; --ink:#e3eaee; --muted:#93a3ae; --line:#2a3b48;
+    --safe:#4cc2c8; --safe-soft:#173a40; --risk:#f2b33d; --risk-soft:#3d3218; --link:#7cc7e6; --grid:#1c2c38;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1a22; --surface:#15232e; --ink:#e3eaee; --muted:#93a3ae; --line:#2a3b48;
+  --safe:#4cc2c8; --safe-soft:#173a40; --risk:#f2b33d; --risk-soft:#3d3218; --link:#7cc7e6; --grid:#1c2c38;
+}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Schibsted Grotesk",system-ui,sans-serif;font-feature-settings:"tnum" 0;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--safe);outline-offset:3px;border-radius:4px}
+button{font:inherit;color:inherit}
+p{margin:0 0 14px}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:180px minmax(0,1fr);gap:56px}
+nav.side{position:sticky;top:0;align-self:start;padding-top:72px;height:100vh}
+nav.side ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+nav.side a{display:block;padding:5px 0 5px 14px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;font-size:.92rem}
+nav.side a:hover{color:var(--ink)}
+nav.side a.on{color:var(--ink);border-left-color:var(--safe);font-weight:500}
+.side-tools{margin-top:28px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+main{padding:64px 0 96px;min-width:0;max-width:700px}
+
+/* ---------- header ---------- */
+.name{font-size:clamp(2.6rem,6vw,3.6rem);font-weight:800;line-height:1;letter-spacing:-.035em;margin:0}
+.ko{font-family:"Noto Sans KR",sans-serif;font-weight:500;font-size:1.05rem;color:var(--muted);margin:10px 0 0;letter-spacing:.02em}
+.role{margin:18px 0 0;font-size:1.02rem;color:var(--muted)}
+.statement{font-size:clamp(1.3rem,2.6vw,1.6rem);line-height:1.35;font-weight:500;letter-spacing:-.012em;margin:28px 0 0;max-width:30ch}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:.92rem;cursor:pointer;transition:border-color .15s}
+.btn:hover{border-color:var(--ink)}
+.btn svg{width:16px;height:16px;flex:none}
+.status{margin-top:22px;font-size:.92rem;color:var(--muted)}
+.status b{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--safe);margin-right:8px;vertical-align:1px}
+
+/* ---------- figure (signature) ---------- */
+.fig{margin:48px 0 0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px}
+.fig-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.fig-title{font-weight:600;font-size:.98rem}
+.fig-count{font-size:.92rem;color:var(--muted)}
+.fig-count strong{color:var(--ink);font-weight:600}
+.fig-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:16px;margin-top:12px}
+#scene{width:100%;height:auto;display:block;border-radius:8px;background:var(--bg)}
+.bars{display:flex;flex-direction:column;justify-content:center;gap:7px}
+.bar{display:grid;grid-template-columns:22px 1fr;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);cursor:pointer;background:none;border:0;padding:0;text-align:left}
+.track{position:relative;height:12px;border-radius:6px;background:var(--grid)}
+.range{position:absolute;top:2px;height:8px;border-radius:4px;background:var(--safe);opacity:.85;transition:left .2s,width .2s}
+.thresh{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--risk)}
+.bar.sel .track{box-shadow:0 0 0 1.5px var(--ink)}
+.bar.unsafe .range{background:var(--risk)}
+.axis{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:.72rem;color:var(--muted)}
+.axis span:last-child{display:flex;justify-content:space-between}
+.ctrl{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.ctrl label{font-size:.9rem;white-space:nowrap}
+.ctrl input[type=range]{flex:1;min-width:140px;accent-color:var(--safe)}
+.cap{font-size:.84rem;color:var(--muted);margin:12px 0 0;line-height:1.5}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:6px;vertical-align:3px}
+
+/* ---------- sections ---------- */
+section{margin-top:76px}
+h2{font-size:1.45rem;font-weight:800;letter-spacing:-.02em;margin:0 0 20px}
+.news{list-style:none;margin:0;padding:0}
+.news li{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:9px 0;border-top:1px solid var(--line)}
+.news li:last-child{border-bottom:1px solid var(--line)}
+.news time{color:var(--muted);font-size:.92rem}
+.interests{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.interests h3{font-size:1rem;margin:0 0 4px;font-weight:600}
+.interests p{font-size:.92rem;color:var(--muted);margin:0}
+
+.pub{display:grid;grid-template-columns:200px minmax(0,1fr);gap:22px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pub-thumb{border-radius:8px;background:var(--bg);border:1px solid var(--line);aspect-ratio:4/3;overflow:hidden}
+.pub-thumb svg{width:100%;height:100%;display:block}
+.pub h3{font-size:1.08rem;line-height:1.35;margin:0 0 6px;font-weight:600}
+.authors{font-size:.94rem;margin:0}
+.authors strong{font-weight:600}
+.venue{font-size:.94rem;color:var(--muted);margin:2px 0 0}
+.venue em{font-style:normal;color:var(--safe);font-weight:500}
+.pub-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{font-size:.84rem;padding:4px 11px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);text-decoration:none;cursor:pointer}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-expanded="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.drawer{grid-column:1/-1;display:none}
+.drawer.open{display:block}
+.drawer p{font-size:.95rem}
+pre.bib{margin:0;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:8px;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-x:auto;white-space:pre}
+.bib-actions{margin-top:8px}
+
+.entry{padding:18px 0;border-top:1px solid var(--line)}
+.entry:last-of-type{border-bottom:1px solid var(--line)}
+.entry-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+.entry h3{font-size:1.02rem;margin:0;font-weight:600}
+.when{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.sub{font-size:.92rem;color:var(--muted);margin:2px 0 0}
+.entry ul{margin:10px 0 0;padding-left:18px;font-size:.95rem}
+.entry li{margin:5px 0}
+.entry p{font-size:.95rem;margin:8px 0 0}
+.metric{font-weight:600;color:var(--safe)}
+.skills{font-size:.95rem;color:var(--muted)}
+
+footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ---------- toast ---------- */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- mobile ---------- */
+.topbar{display:none}
+@media (max-width:860px){
+  .wrap{grid-template-columns:1fr;gap:0;padding:0 16px}
+  nav.side{display:none}
+  .topbar{display:flex;position:sticky;top:0;z-index:5;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .topbar a{color:var(--ink);text-decoration:none;font-weight:600}
+  main{padding-top:36px}
+  .fig-body{grid-template-columns:1fr}
+  .interests{grid-template-columns:1fr;gap:14px}
+  .pub{grid-template-columns:1fr}
+  .pub-thumb{max-width:280px}
+  .news li{grid-template-columns:80px 1fr}
+}
+@media print{
+  nav.side,.topbar,.fig,.actions,.pub-links,.toast{display:none!important}
+  .wrap{display:block}
+  body{background:#fff;color:#000}
+}
 </style>
 </head>
 <body>
-<main>
-  <h1>Dongryeol Lee</h1>
-  <p class="sub">이동렬 · Undergraduate Researcher, Computer Science and Engineering (AI Track), UNIST</p>
-  <div class="links">
-    <a href="mailto:dong1128@unist.ac.kr">Email</a>
-    <a href="https://github.com/drleeeee">GitHub</a>
-    <a href="cv.pdf">CV</a>
-  </div>
 
-  <h2>About</h2>
-  <p class="lead"><strong>I work on embodied AI that has to act in the physical world</strong> — aligning generative robot policies with physical safety, and understanding why gains measured on proposals do not always survive closed-loop execution.</p>
-  <p>I'm an undergraduate in Computer Science and Engineering (AI Track) at UNIST with a minor in Business Administration, and a research intern at the <a href="https://sites.google.com/view/imml-lab/" target="_blank" rel="noopener">Interactive Multimodal Machine Learning Lab (IMML)</a> advised by <a href="https://sites.google.com/view/taehwankim" target="_blank" rel="noopener">Prof. Taehwan Kim</a>.</p>
-  <p class="status">Applying to research-focused M.S. programs for Fall 2028.</p>
+<div class="topbar">
+  <a href="#top">Dongryeol Lee</a>
+  <button class="btn theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-label">Theme</span></button>
+</div>
 
-  <h2>News</h2>
-  <div class="news">
-    <!-- ADD NEWS: newest first
-    <div class="d">Mon YYYY</div><div>What happened.</div>
-    -->
-    <div class="d">Dec 2026</div><div>SafeCine poster at the 8th Robot Learning Workshop, NeurIPS 2026 (Sydney).</div>
-    <div class="d">Sep 2026</div><div>SafeCine accepted as a poster at the 8th Robot Learning Workshop, NeurIPS 2026.</div>
-    <div class="d">Dec 2025</div><div>Joined IMML Lab at UNIST as an undergraduate research intern.</div>
-  </div>
+<div class="wrap">
+  <nav class="side" aria-label="Sections">
+    <ol>
+      <li><a href="#top">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ol>
+    <div class="side-tools">
+      <button class="btn theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-label">Theme</span></button>
+    </div>
+  </nav>
 
-  <h2>Research Interests</h2>
-  <ul>
-    <li><strong>Vision-Language-Action models &amp; embodied AI</strong> — grounded multimodal reasoning, closed-loop decision policies, spatial cognition</li>
-    <li><strong>World models</strong> — generative dynamics, physics-grounded representations, simulation and sim-to-real transfer</li>
-    <li><strong>Foundation models</strong> — VLMs, diffusion-based trajectory generation, and how long-lived AI systems absorb replaced components such as encoders and world models</li>
-  </ul>
+  <main id="top">
+    <!-- ================= HEADER ================= -->
+    <header>
+      <h1 class="name">Dongryeol Lee</h1>
+      <p class="ko" lang="ko">이동렬</p>
+      <p class="role">Undergraduate researcher in Computer Science and Engineering (AI Track) at UNIST, and research intern at the <a href="https://sites.google.com/view/imml-lab/" target="_blank" rel="noopener">IMML Lab</a> with <a href="https://sites.google.com/view/taehwankim" target="_blank" rel="noopener">Prof. Taehwan Kim</a>.</p>
+      <p class="statement">I work on embodied AI that has to act safely in the physical world, and on why gains measured on proposals do not always survive closed-loop execution.</p>
+      <div class="actions">
+        <button class="btn" type="button" id="copy-email" data-email="dong1128@unist.ac.kr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+          <span>dong1128@unist.ac.kr</span>
+        </button>
+        <a class="btn" href="cv.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>
+          <span>CV (PDF)</span>
+        </a>
+        <a class="btn" href="https://github.com/drleeeee" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+      <p class="status"><b aria-hidden="true"></b>Applying to research-focused M.S. programs for Fall 2028.</p>
+    </header>
 
-  <h2>Publications</h2>
-  <!-- ADD PUBLICATION: copy this block above the newest one. Tag: Conference / Workshop / Poster / Preprint
-  <div class="item">
-    <div class="t">Paper Title <span class="tag">Conference</span></div>
-    <div class="meta"><strong>Dongryeol Lee</strong>, Coauthor, Advisor</div>
-    <div class="meta">Venue Year</div>
-    <div class="meta"><a href="#">Paper</a> · <a href="#">Code</a> · <a href="#">Project page</a></div>
-  </div>
-  -->
-  <div class="item">
-    <div class="t">SafeCine: Risk-Calibrated Physical Preference Supervision for Language-Conditioned Aerial Cinematography <span class="tag">Poster</span></div>
-    <div class="meta"><strong>Dongryeol Lee</strong>, Jaeyeon Bae, Taehwan Kim</div>
-    <div class="meta">8th Robot Learning Workshop at NeurIPS 2026 · non-archival</div>
-    <div class="meta"><a href="https://openreview.net/forum?id=IhmxxZLjha" target="_blank" rel="noopener">OpenReview</a></div>
-  </div>
+    <!-- ================= SIGNATURE FIGURE ================= -->
+    <figure class="fig" aria-labelledby="fig-title">
+      <div class="fig-head">
+        <span class="fig-title" id="fig-title">Which camera path is actually safer?</span>
+        <span class="fig-count" aria-live="polite"><strong class="num" id="resolved">0</strong> of 28 pairs resolved</span>
+      </div>
+      <div class="fig-body">
+        <svg id="scene" viewBox="0 0 400 260" role="img" aria-label="Top-down view of eight candidate drone camera paths around a filmed subject and two obstacles, with perturbed rollouts."></svg>
+        <div>
+          <div class="bars" id="bars" aria-label="Clearance range for each candidate path"></div>
+          <div class="axis" aria-hidden="true"><span></span><span><span>0 m</span><span>min clearance</span><span>1.2 m</span></span></div>
+        </div>
+      </div>
+      <div class="ctrl">
+        <label for="wind">Physical perturbation</label>
+        <input type="range" id="wind" min="0" max="100" value="45" aria-describedby="fig-cap">
+        <button class="chip" type="button" id="reroll">New perturbations</button>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><i style="background:var(--safe)"></i>stays clear</span>
+        <span><i style="background:var(--risk)"></i>can breach 0.3 m clearance</span>
+        <span><i style="background:var(--muted);opacity:.5"></i>perturbed rollouts</span>
+      </div>
+      <figcaption class="cap" id="fig-cap">An illustration of the idea behind SafeCine. Every candidate path is flown under the <em>same</em> set of perturbations, and a preference between two paths is kept only when its 95% Wilson bound is decisive. Raise the perturbation and watch ambiguous pairs drop out instead of becoming noisy labels. Pick a bar to inspect one path.</figcaption>
+    </figure>
 
-  <h2>Research Experience</h2>
-  <div class="item">
-    <div class="t"><a href="https://sites.google.com/view/imml-lab/" target="_blank" rel="noopener">IMML Lab</a>, UNIST — Undergraduate Research Intern</div>
-    <div class="meta">Advisor: Prof. Taehwan Kim · Dec 2025 – Present</div>
-    <ul class="desc">
-      <li><strong>RCL-CPM:</strong> Risk-Calibrated Local Counterfactual Preference Mining — compares candidate trajectories under matched physical perturbations and keeps only pairs resolved by Wilson 95% bounds, for DPO-style alignment of a diffusion proposal policy for language-conditioned camera drones.</li>
-      <li><strong>Isaac Sim benchmark:</strong> Closed-loop physical evaluation across 8 scene families in Isaac Sim 4.5 / PhysX. Candidate clearance q0.05 improved 0.391 m → 0.501 m (+0.110 m), tested with parent-stratified bootstrap and exact McNemar tests.</li>
-      <li><strong>Limitation:</strong> the proposal-level gain did not carry over to the full closed-loop system. This proposal–execution gap motivates ongoing follow-up work.</li>
-    </ul>
-  </div>
+    <!-- ================= NEWS ================= -->
+    <section id="news" aria-labelledby="h-news">
+      <h2 id="h-news">News</h2>
+      <ul class="news">
+        <!-- ADD NEWS (newest first):
+        <li><time datetime="YYYY-MM">Mon YYYY</time><span>What happened.</span></li>
+        -->
+        <li><time datetime="2026-12">Dec 2026</time><span>SafeCine is presented as a poster at the 8th Robot Learning Workshop, NeurIPS 2026 in Sydney.</span></li>
+        <li><time datetime="2026-09">Sep 2026</time><span>SafeCine is accepted as a poster at the 8th Robot Learning Workshop, NeurIPS 2026.</span></li>
+        <li><time datetime="2025-12">Dec 2025</time><span>Joined the IMML Lab at UNIST as an undergraduate research intern.</span></li>
+      </ul>
+    </section>
 
-  <h2>Selected Projects</h2>
-  <!-- ADD PROJECT: copy this block. Keep 2-3 strongest only.
-  <div class="item">
-    <div class="t">Project Title</div>
-    <div class="meta">Role · Context · Mon – Mon YYYY</div>
-    <div class="desc">One or two sentences with the key result number.</div>
-  </div>
-  -->
-  <div class="item">
-    <div class="t">Drive-CoT: Explainable Multimodal Action Generation via Linguistic Mediation</div>
-    <div class="meta">Lead Developer · NLP course research project · May – Jun 2026</div>
-    <div class="desc">Chain-of-thought spatial rationales before action tokens in LLaVA-1.5-7B (LoRA), trained on 10K synthesized pairs from BDD100K/BDD-X. Action accuracy 51.0% → 77.5%; minority STOP-class F1 0.75.</div>
-  </div>
-  <div class="item">
-    <div class="t">Project N.E.O. — Multi-Agent Pipeline for National Statistics</div>
-    <div class="meta">Core AI Agent Architecture Engineer · UNIST AICP · Jun 2026</div>
-    <div class="desc">AutoGen-based pipeline for KOSIS data ingestion, schema validation, and insight synthesis, with cross-agent verification for factual consistency.</div>
-  </div>
+    <!-- ================= INTERESTS ================= -->
+    <section aria-labelledby="h-int">
+      <h2 id="h-int">Research interests</h2>
+      <div class="interests">
+        <div><h3>Vision-language-action models</h3><p>Grounded multimodal reasoning, closed-loop decision policies, and spatial cognition for embodied agents.</p></div>
+        <div><h3>World models</h3><p>Generative dynamics, physics-grounded representations, simulation, and sim-to-real transfer.</p></div>
+        <div><h3>Foundation models</h3><p>VLMs, diffusion-based trajectory generation, and long-lived AI systems whose components get replaced over time.</p></div>
+      </div>
+    </section>
 
-  <h2>Education</h2>
-  <div class="item">
-    <div class="t">Ulsan National Institute of Science and Technology (UNIST)</div>
-    <div class="meta">B.S. Computer Science and Engineering (AI Track) · Minor in Business Administration · Mar 2022 – Feb 2028 (expected)</div>
-  </div>
+    <!-- ================= PUBLICATIONS ================= -->
+    <section id="publications" aria-labelledby="h-pub">
+      <h2 id="h-pub">Publications</h2>
+      <!-- ADD PUBLICATION: copy one <article class="pub"> block above the newest one.
+           Give each drawer a unique id (abs-xxx, bib-xxx) and match aria-controls. -->
+      <article class="pub">
+        <div class="pub-thumb" aria-hidden="true">
+          <svg viewBox="0 0 160 120">
+            <rect width="160" height="120" fill="var(--bg)"/>
+            <circle cx="80" cy="64" r="7" fill="var(--ink)"/>
+            <circle cx="52" cy="34" r="11" fill="var(--risk-soft)" stroke="var(--risk)"/>
+            <circle cx="116" cy="88" r="9" fill="var(--risk-soft)" stroke="var(--risk)"/>
+            <path d="M14 100 C40 96, 30 58, 62 54 S 120 40, 146 22" fill="none" stroke="var(--risk)" stroke-width="2" stroke-dasharray="4 3"/>
+            <path d="M14 100 C50 110, 70 92, 100 70 S 132 40, 146 22" fill="none" stroke="var(--safe)" stroke-width="2.6"/>
+            <circle cx="146" cy="22" r="4" fill="var(--safe)"/>
+          </svg>
+        </div>
+        <div>
+          <h3>SafeCine: Risk-Calibrated Physical Preference Supervision for Language-Conditioned Aerial Cinematography</h3>
+          <p class="authors"><strong>Dongryeol Lee</strong>, Jaeyeon Bae, Taehwan Kim</p>
+          <p class="venue">8th Robot Learning Workshop at NeurIPS 2026, <em>poster</em> (non-archival)</p>
+          <div class="pub-links">
+            <a class="chip" href="https://openreview.net/forum?id=IhmxxZLjha" target="_blank" rel="noopener">OpenReview</a>
+            <button class="chip" type="button" aria-expanded="false" aria-controls="abs-safecine">Summary</button>
+            <button class="chip" type="button" aria-expanded="false" aria-controls="bib-safecine">BibTeX</button>
+          </div>
+        </div>
+        <div class="drawer" id="abs-safecine">
+          <p>Language-conditioned camera drones need to frame shots well without flying too close to people or obstacles. SafeCine aligns a diffusion proposal policy with physical safety using preferences mined from simulation: candidate trajectories are compared under matched physical perturbations, and only pairs that a 95% Wilson bound resolves are kept for DPO-style training, while ambiguous pairs are discarded.</p>
+          <p>Across eight scene families in Isaac Sim 4.5 / PhysX, worst-case candidate clearance (q0.05) rose from 0.391 m to 0.501 m. The paper also reports that this proposal-level gain did not carry over to the full closed-loop system, and it analyzes where that gap opens.</p>
+        </div>
+        <div class="drawer" id="bib-safecine">
+<pre class="bib" id="bibtext-safecine">@inproceedings{lee2026safecine,
+  title     = {SafeCine: Risk-Calibrated Physical Preference Supervision
+               for Language-Conditioned Aerial Cinematography},
+  author    = {Lee, Dongryeol and Bae, Jaeyeon and Kim, Taehwan},
+  booktitle = {8th Robot Learning Workshop at NeurIPS},
+  year      = {2026},
+  note      = {Non-archival}
+}</pre>
+          <div class="bib-actions"><button class="chip copy-bib" type="button" data-target="bibtext-safecine">Copy BibTeX</button></div>
+        </div>
+      </article>
+    </section>
 
-  <h2>Skills</h2>
-  <div class="desc">Python, C/C++, PyTorch, Hugging Face (Transformers, PEFT/LoRA), NVIDIA Isaac Sim / PhysX, diffusion policies, DPO-style preference optimization, AutoGen, Docker, W&amp;B</div>
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience" aria-labelledby="h-exp">
+      <h2 id="h-exp">Research experience</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <h3><a href="https://sites.google.com/view/imml-lab/" target="_blank" rel="noopener">IMML Lab</a>, UNIST</h3>
+          <span class="when">Dec 2025 to present</span>
+        </div>
+        <p class="sub">Undergraduate research intern, advised by Prof. Taehwan Kim</p>
+        <ul>
+          <li><strong>RCL-CPM.</strong> Risk-Calibrated Local Counterfactual Preference Mining compares candidate trajectories under matched physical perturbations and keeps only pairs resolved by Wilson 95% bounds, for DPO-style alignment of a diffusion proposal policy for language-conditioned camera drones.</li>
+          <li><strong>Isaac Sim benchmark.</strong> Closed-loop physical evaluation across 8 scene families in Isaac Sim 4.5 / PhysX. Candidate clearance q0.05 improved <span class="metric num">0.391 m to 0.501 m</span>, tested with parent-stratified bootstrap and exact McNemar tests.</li>
+          <li><strong>What did not work.</strong> The proposal-level gain did not carry over to the full closed-loop system. This proposal-to-execution gap motivates my follow-up work.</li>
+        </ul>
+      </div>
+    </section>
 
-  <footer>Last updated November 2026</footer>
-</main>
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" aria-labelledby="h-proj">
+      <h2 id="h-proj">Selected projects</h2>
+      <!-- ADD PROJECT: copy one <div class="entry"> block. Keep the 2-3 strongest only. -->
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Drive-CoT: Explainable Multimodal Action Generation via Linguistic Mediation</h3>
+          <span class="when">May to Jun 2026</span>
+        </div>
+        <p class="sub">Lead developer, NLP course research project</p>
+        <p>Chain-of-thought spatial rationales before action tokens in LLaVA-1.5-7B (LoRA), trained on 10K synthesized pairs from BDD100K and BDD-X. Action accuracy rose from <span class="metric num">51.0% to 77.5%</span>, with minority STOP-class F1 of 0.75.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Uncertainty-Guided Monocular Depth Estimation for Embodied Perception</h3>
+          <span class="when">May to Jun 2026</span>
+        </div>
+        <p class="sub">Team project, CSE363 Machine Learning</p>
+        <p>Monocular depth estimation with epistemic and aleatoric uncertainty modeling, used to filter noisy depth artifacts under dynamic robot camera motion.</p>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION ================= -->
+    <section id="education" aria-labelledby="h-edu">
+      <h2 id="h-edu">Education</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Ulsan National Institute of Science and Technology (UNIST)</h3>
+          <span class="when">Mar 2022 to Feb 2028 (expected)</span>
+        </div>
+        <p class="sub">B.S. in Computer Science and Engineering (AI Track), minor in Business Administration</p>
+      </div>
+      <h2 style="margin-top:44px;font-size:1.1rem" id="h-skills">Tools I use</h2>
+      <p class="skills">Python, C/C++, PyTorch, Hugging Face (Transformers, PEFT/LoRA), NVIDIA Isaac Sim / PhysX, diffusion policies, DPO-style preference optimization, AutoGen, Docker, Weights &amp; Biases</p>
+    </section>
+
+    <footer>
+      <span>Last updated November 2026</span>
+      <a href="#top">Back to top</a>
+    </footer>
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  /* ---------- theme ---------- */
+  var root=document.documentElement, order=['system','light','dark'];
+  function getPref(){try{return localStorage.getItem('theme')||'system'}catch(e){return 'system'}}
+  function apply(p){
+    if(p==='system')root.removeAttribute('data-theme');else root.setAttribute('data-theme',p);
+    document.querySelectorAll('.theme-label').forEach(function(el){el.textContent=p==='system'?'Theme: auto':p==='light'?'Theme: light':'Theme: dark'});
+  }
+  apply(getPref());
+  document.querySelectorAll('.theme-toggle').forEach(function(b){b.addEventListener('click',function(){
+    var n=order[(order.indexOf(getPref())+1)%3];try{localStorage.setItem('theme',n)}catch(e){} apply(n);
+    render();
+  })});
+
+  /* ---------- toast & copy ---------- */
+  var toast=document.getElementById('toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},1800)}
+  function copy(text,msg){
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){say(msg)},function(){say('Copy failed. Select the text to copy it.')})}
+    else say('Copy failed. Select the text to copy it.');
+  }
+  var em=document.getElementById('copy-email');
+  em.addEventListener('click',function(){copy(em.dataset.email,'Email address copied')});
+  document.querySelectorAll('.copy-bib').forEach(function(b){b.addEventListener('click',function(){copy(document.getElementById(b.dataset.target).textContent,'BibTeX copied')})});
+
+  /* ---------- drawers ---------- */
+  document.querySelectorAll('.chip[aria-controls]').forEach(function(b){b.addEventListener('click',function(){
+    var d=document.getElementById(b.getAttribute('aria-controls')),open=b.getAttribute('aria-expanded')!=='true';
+    b.closest('.pub').querySelectorAll('.chip[aria-controls]').forEach(function(o){o.setAttribute('aria-expanded','false');document.getElementById(o.getAttribute('aria-controls')).classList.remove('open')});
+    if(open){b.setAttribute('aria-expanded','true');d.classList.add('open')}
+  })});
+
+  /* ---------- scrollspy ---------- */
+  var links=[].slice.call(document.querySelectorAll('nav.side a'));
+  function spy(){
+    var y=window.scrollY+140,cur=links[0];
+    links.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t&&t.getBoundingClientRect().top+window.scrollY<=y)cur=a});
+    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)cur=links[links.length-1];
+    links.forEach(function(a){a.classList.toggle('on',a===cur)});
+  }
+  window.addEventListener('scroll',spy,{passive:true});spy();
+
+  /* ---------- signature figure ---------- */
+  var NS='http://www.w3.org/2000/svg',svg=document.getElementById('scene'),barsEl=document.getElementById('bars'),
+      wind=document.getElementById('wind'),resolvedEl=document.getElementById('resolved');
+  var K=8,N=16,T=56,SAFE=0.3,SCALE=100; // 100 px = 1 m
+  var obstacles=[{x:142,y:50,r:14},{x:262,y:212,r:14}], subject={x:330,y:190};
+  var seed=7,noise=[],sel=4;
+  function rng(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+  function gauss(){var u=rng()||1e-9,v=rng();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+  function makeNoise(){noise=[];for(var n=0;n<N;n++){noise.push({ax:gauss(),ay:gauss(),bx:gauss(),by:gauss(),f:1+rng()*2})}}
+  // nominal path k: from (30,226) to (372,40), bowing by offset
+  function nominal(k,t){
+    var s=t/(T-1),off=(k-(K-1)/2)*26;
+    var x=30+342*s, y=226-186*s;
+    var nx=0.477,ny=0.879; // normal to the chord
+    var bow=Math.sin(Math.PI*s)*(off+6);
+    return {x:x+nx*bow,y:y+ny*bow-Math.sin(Math.PI*s)*10};
+  }
+  function rollout(k,n,amp){
+    var pts=[],z=noise[n];
+    for(var t=0;t<T;t++){var s=t/(T-1),p=nominal(k,t),env=Math.sin(Math.PI*s);
+      pts.push({x:p.x+amp*env*(z.ax*Math.sin(z.f*3*s)+0.5*z.bx),y:p.y+amp*env*(z.ay*Math.cos(z.f*2.4*s)+0.5*z.by)})}
+    return pts;
+  }
+  function clearance(pts){
+    var m=1e9;pts.forEach(function(p){obstacles.forEach(function(o){var d=Math.hypot(p.x-o.x,p.y-o.y)-o.r;if(d<m)m=d})});
+    return Math.max(0,m)/SCALE;
+  }
+  function wilson(w,n){var z=1.96,p=w/n,d=1+z*z/n,c=p+z*z/(2*n),h=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n));return [(c-h)/d,(c+h)/d]}
+  function css(v){return getComputedStyle(root).getPropertyValue(v).trim()}
+  function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var a in attrs)e.setAttribute(a,attrs[a]);(parent||svg).appendChild(e);return e}
+  function d(pts){return 'M'+pts.map(function(p){return p.x.toFixed(1)+' '+p.y.toFixed(1)}).join('L')}
+
+  var bars=[];
+  for(var k=0;k<K;k++){(function(k){
+    var b=document.createElement('button');b.type='button';b.className='bar';b.setAttribute('aria-label','Candidate path '+(k+1));
+    b.innerHTML='<span class="num">'+(k+1)+'</span><span class="track"><span class="range"></span><span class="thresh"></span></span>';
+    b.addEventListener('click',function(){sel=k;render()});barsEl.appendChild(b);bars.push(b);
+  })(k)}
+
+  function render(){
+    var amp=wind.value/100*14, safe=css('--safe'),risk=css('--risk'),ink=css('--ink'),muted=css('--muted'),grid=css('--grid'),riskSoft=css('--risk-soft');
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    for(var gx=0;gx<=400;gx+=40)el('line',{x1:gx,y1:0,x2:gx,y2:260,stroke:grid,'stroke-width':1});
+    for(var gy=0;gy<=260;gy+=40)el('line',{x1:0,y1:gy,x2:400,y2:gy,stroke:grid,'stroke-width':1});
+    obstacles.forEach(function(o){
+      el('circle',{cx:o.x,cy:o.y,r:o.r+SAFE*SCALE,fill:'none',stroke:risk,'stroke-width':1,'stroke-dasharray':'3 4',opacity:.7});
+      el('circle',{cx:o.x,cy:o.y,r:o.r,fill:riskSoft,stroke:risk,'stroke-width':1.5});
+    });
+    el('circle',{cx:subject.x,cy:subject.y,r:6,fill:ink});
+    var lab=el('text',{x:subject.x+10,y:subject.y+4,fill:muted,'font-size':11});lab.textContent='subject';
+    var cl=[],lo=[],hi=[];
+    for(var k=0;k<K;k++){
+      cl[k]=[];for(var n=0;n<N;n++)cl[k].push(clearance(rollout(k,n,amp)));
+      lo[k]=Math.min.apply(null,cl[k]);hi[k]=Math.max.apply(null,cl[k]);
+    }
+    // perturbed rollouts of the selected path
+    for(var n=0;n<N;n++)el('path',{d:d(rollout(sel,n,amp)),fill:'none',stroke:muted,'stroke-width':1,opacity:.35});
+    for(var k=0;k<K;k++){
+      var ok=lo[k]>=SAFE;
+      var nom=[];for(var t=0;t<T;t++)nom.push(nominal(k,t));
+      el('path',{d:d(nom),fill:'none',stroke:ok?safe:risk,'stroke-width':k===sel?3:1.6,'stroke-dasharray':ok?'':'5 4',opacity:k===sel?1:.75});
+    }
+    el('circle',{cx:30,cy:226,r:5,fill:ink});
+    var st=el('text',{x:40,y:240,fill:muted,'font-size':11});st.textContent='drone start';
+    // resolved pairs (matched perturbations, Wilson 95%)
+    var res=0;
+    for(var i=0;i<K;i++)for(var j=i+1;j<K;j++){
+      var w=0,m=0;for(var n=0;n<N;n++){if(cl[i][n]>cl[j][n])w++;else if(cl[i][n]<cl[j][n])m++}
+      var tot=w+m;if(!tot)continue;var ci=wilson(w,tot);if(ci[0]>0.5||ci[1]<0.5)res++;
+    }
+    resolvedEl.textContent=res;
+    bars.forEach(function(b,k){
+      var r=b.querySelector('.range'),th=b.querySelector('.thresh'),maxM=1.2;
+      r.style.left=(Math.min(lo[k],maxM)/maxM*100)+'%';
+      r.style.width=Math.max(2,(Math.min(hi[k],maxM)-Math.min(lo[k],maxM))/maxM*100)+'%';
+      th.style.left=(SAFE/maxM*100)+'%';
+      b.classList.toggle('unsafe',lo[k]<SAFE);b.classList.toggle('sel',k===sel);
+      b.setAttribute('aria-label','Candidate path '+(k+1)+': clearance '+lo[k].toFixed(2)+' to '+hi[k].toFixed(2)+' m'+(k===sel?', selected':''));
+    });
+  }
+  makeNoise();render();
+  wind.addEventListener('input',render);
+  document.getElementById('reroll').addEventListener('click',function(){makeNoise();render();say('New perturbations sampled')});
+  if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',render);
+})();
+</script>
 </body>
 </html>
