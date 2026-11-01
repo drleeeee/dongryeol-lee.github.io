@@ -128,7 +128,11 @@ pre.bib{margin:0;padding:14px 16px;background:var(--surface);border:1px solid va
 .entry li{margin:5px 0}
 .entry p{font-size:.95rem;margin:8px 0 0}
 .metric{font-weight:600;color:var(--safe)}
-.skills{font-size:.95rem;color:var(--muted)}
+.skillgrid{display:grid;grid-template-columns:190px minmax(0,1fr);margin:0;font-size:.95rem}
+.skillgrid dt,.skillgrid dd{padding:11px 0;border-top:1px solid var(--line);margin:0}
+.skillgrid dt{font-weight:600;padding-right:16px}
+.skillgrid dd{color:var(--muted)}
+@media (max-width:860px){.skillgrid{grid-template-columns:1fr}.skillgrid dd{border-top:0;padding-top:0}}
 
 footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
@@ -173,6 +177,7 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
     </ol>
     <div class="side-tools">
       <button class="btn theme-toggle" type="button" aria-label="Switch color theme"><span class="theme-label">Theme</span></button>
@@ -346,8 +351,25 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">B.S. in Computer Science and Engineering (AI Track), minor in Business Administration</p>
       </div>
-      <h2 style="margin-top:44px;font-size:1.1rem" id="h-skills">Tools I use</h2>
-      <p class="skills">Python, C/C++, PyTorch, Hugging Face (Transformers, PEFT/LoRA), NVIDIA Isaac Sim / PhysX, diffusion policies, DPO-style preference optimization, AutoGen, Docker, Weights &amp; Biases</p>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" aria-labelledby="h-skills">
+      <h2 id="h-skills">Skills</h2>
+      <dl class="skillgrid">
+        <dt>Programming</dt>
+        <dd>Python (proficient), C++ and C (coursework), Bash (daily on GPU servers), LaTeX (papers, CVs, posters), SQL</dd>
+        <dt>Machine learning</dt>
+        <dd>PyTorch, Hugging Face Transformers and PEFT/LoRA, diffusion policies, DPO-style preference optimization, vision-language models (LLaVA), YOLO, scikit-learn, NumPy, pandas</dd>
+        <dt>Areas I have built in</dt>
+        <dd>Robotics (camera-drone policies in simulation), computer vision (detection, depth estimation, grounding), NLP (chain-of-thought VLMs, multi-agent LLM pipelines)</dd>
+        <dt>Robotics and simulation</dt>
+        <dd>NVIDIA Isaac Sim 4.5 / PhysX, closed-loop evaluation, statistical testing of rollouts (bootstrap, McNemar, Wilson bounds)</dd>
+        <dt>Infrastructure</dt>
+        <dd>Linux, shared GPU clusters with job schedulers, Docker, Git and GitHub, Weights &amp; Biases, Jupyter and Colab, AutoGen</dd>
+        <dt>Languages</dt>
+        <dd>Korean (native), English (professional working proficiency)</dd>
+      </dl>
     </section>
 
     <footer>
