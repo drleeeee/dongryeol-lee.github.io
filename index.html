@@ -6,6 +6,8 @@
 <title>Dongryeol Lee</title>
 <meta name="description" content="Dongryeol Lee, undergraduate researcher at UNIST (IMML Lab). Interested in AI broadly, deepest in embodied AI: VLA models, world models, and foundation models.">
 <meta property="og:title" content="Dongryeol Lee">
+<meta property="og:image" content="https://drleeeee.github.io/dongryeol-lee.github.io/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:description" content="Undergraduate researcher at UNIST (IMML Lab). Embodied AI, world models, VLA.">
 <meta name="theme-color" content="#eef2f4">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314232f'/%3E%3Cpath d='M6 22 C12 8, 20 8, 26 18' stroke='%2337b3b9' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='26' cy='18' r='3' fill='%23f2b33d'/%3E%3C/svg%3E">
@@ -68,10 +70,14 @@ main{padding:64px 0 96px;min-width:0;max-width:700px}
 /* ---------- header with photo slot ---------- */
 .head-grid{display:grid;grid-template-columns:minmax(0,1fr) 168px;gap:32px;align-items:start}
 .photo{width:168px;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
 .photo .initials{font-weight:800;font-size:2.4rem;letter-spacing:-.03em;color:var(--line)}
 .beyond{margin-top:14px;color:var(--muted);font-size:1rem;max-width:56ch}
 @media (max-width:860px){.head-grid{grid-template-columns:1fr}.photo{width:120px;order:-1}}
+
+.bio{margin-top:14px;font-size:.92rem;color:var(--muted)}
+.bio summary{cursor:pointer;color:var(--ink);font-weight:500;width:max-content}
+.bio p{margin:10px 0}
 
 /* ---------- T-shaped interests ---------- */
 .tee{margin-top:4px}
@@ -243,11 +249,14 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
           <span>GitHub</span>
         </a>
       </div>
-      <p class="status"><b aria-hidden="true"></b>Applying to research-focused M.S. programs for Fall 2028.</p>
+      <p class="status"><b aria-hidden="true"></b>Applying to research-focused M.S. programs for Fall 2028. Happy to talk about research, internships, or collaborations.</p>
+      <details class="bio">
+        <summary>Short bio</summary>
+        <p id="bio-text">Dongryeol Lee is an undergraduate in Computer Science and Engineering (AI Track) at UNIST, minoring in Business Administration, and a research intern at the Interactive Multimodal Machine Learning Lab advised by Prof. Taehwan Kim. His interests span AI broadly, with a focus on embodied AI: vision-language-action models, world models, and foundation models. His first-author work on aligning generative robot policies with physical safety appeared at the Robot Learning Workshop at NeurIPS 2026.</p>
+        <button class="chip copy-bib" type="button" data-target="bio-text">Copy bio</button>
+      </details>
      </div>
-     <!-- PHOTO: put photo.jpg in the repo, then replace the <span class="initials"> line with:
-          <img src="photo.jpg" alt="Dongryeol Lee"> -->
-     <div class="photo" aria-hidden="true"><span class="initials">DL</span></div>
+     <div class="photo"><img src="photo.jpg" alt="Dongryeol Lee at the Santa Monica Pier" width="480" height="600"></div>
      </div>
     </header>
 
@@ -420,6 +429,14 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Team entry, 6th K-AI Manufacturing Data Analysis Competition (KAMP)</p>
         <p>Early prediction of injection-molding defects and prioritization of which parts to inspect first.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Slingshot Control: Pull-to-Select Interaction for Trackpads</h3>
+          <span class="when">Fall 2026, in progress</span>
+        </div>
+        <p class="sub">Team project, CSE333 Introduction to Human-Computer Interaction</p>
+        <p>Switching between many desktops takes one swipe per step and is easy to overshoot. We designed a slingshot gesture instead: rest four fingers, pull back to aim, and release, where pull direction and length pick one of ten targets with a live aim preview and cancel. Working Mac prototype with per-frame finger tracking; a user study with about 30 participants is next.</p>
       </div>
       <div class="entry">
         <div class="entry-head">
