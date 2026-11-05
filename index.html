@@ -162,6 +162,8 @@ pre.bib{margin:0;padding:14px 16px;background:var(--surface);border:1px solid va
 .entry li{margin:5px 0}
 .entry p{font-size:.95rem;margin:8px 0 0}
 .metric{font-weight:600;color:var(--safe)}
+.proj-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.proj-links:not(:has(a:not([hidden]))){display:none}
 .skillgrid{display:grid;grid-template-columns:190px minmax(0,1fr);margin:0;font-size:.95rem}
 .skillgrid dt,.skillgrid dd{padding:11px 0;border-top:1px solid var(--line);margin:0}
 .skillgrid dt{font-weight:600;padding-right:16px}
@@ -238,12 +240,14 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>
           <span>CV (PDF)</span>
         </a>
-        <!-- LINKEDIN: replace the href with your profile URL, then delete this comment line and the two marker lines below.
-        <a class="btn" href="https://www.linkedin.com/in/YOUR-ID/" target="_blank" rel="noopener">
+        <a class="btn" href="https://www.linkedin.com/in/dongryeol-lee-100596371/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>
           <span>LinkedIn</span>
         </a>
-        LINKEDIN-END -->
+        <a class="btn" href="https://openreview.net/profile?id=~Dongryeol_Lee3" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+          <span>OpenReview</span>
+        </a>
         <a class="btn" href="https://github.com/drleeeee" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
           <span>GitHub</span>
@@ -331,15 +335,16 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
           </div>
         </div>
         <div class="drawer" id="abs-safecine">
-          <p>Language-conditioned camera drones need to frame shots well without flying too close to people or obstacles. SafeCine aligns a diffusion proposal policy with physical safety using preferences mined from simulation: candidate trajectories are compared under matched physical perturbations, and only pairs that a 95% Wilson bound resolves are kept for DPO-style training, while ambiguous pairs are discarded.</p>
-          <p>Across eight scene families in Isaac Sim 4.5 / PhysX, worst-case candidate clearance (q0.05) rose from 0.391 m to 0.501 m. The paper also reports that this proposal-level gain did not carry over to the full closed-loop system, and it analyzes where that gap opens.</p>
+          <p>Language-conditioned aerial cinematography needs both expressive trajectory generation and physically reliable supervision. Near safety boundaries, independently perturbed rollouts can confuse trajectory quality with disturbance variation and produce unstable pairwise labels. RCL-CPM compares candidate trajectories from the same context under matched physical perturbations, and abstains when finite-sample evidence cannot resolve the comparison. The resulting preferences align a diffusion proposal policy, while SafeCine keeps runtime execution decisions separate through physical and task admissibility checks before cinematic selection.</p>
+          <p>On a frozen matched physical evaluation, the aligned policy improves lower-tail clearance by 0.11 m (95% CI [0.09, 0.15]). Closed-loop evaluation reveals a gap between proposal quality and execution coverage, which motivates a layered design: preference supervision improves proposals, while runtime verification governs execution.</p>
         </div>
         <div class="drawer" id="bib-safecine">
 <pre class="bib" id="bibtext-safecine">@inproceedings{lee2026safecine,
   title     = {SafeCine: Risk-Calibrated Physical Preference Supervision
                for Language-Conditioned Aerial Cinematography},
   author    = {Lee, Dongryeol and Bae, Jaeyeon and Kim, Taehwan},
-  booktitle = {8th Robot Learning Workshop at NeurIPS},
+  booktitle = {8th Robot Learning Workshop: Is Physical AI Going Zero-Shot?,
+               NeurIPS},
   year      = {2026},
   note      = {Non-archival}
 }</pre>
@@ -397,7 +402,8 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
     <!-- ================= PROJECTS ================= -->
     <section id="projects" aria-labelledby="h-proj">
       <h2 id="h-proj">Selected projects</h2>
-      <!-- ADD PROJECT: copy one <div class="entry"> block. Finished projects first, in-progress ones last. -->
+      <!-- ADD PROJECT: copy one <div class="entry"> block. Finished projects first, in-progress ones last.
+           LINKS: paste a URL into href="" for Slides / Code / Report. Buttons with an empty href stay hidden. -->
       <div class="entry">
         <div class="entry-head">
           <h3>Drive-CoT: Explainable Multimodal Action Generation via Linguistic Mediation</h3>
@@ -405,6 +411,11 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Lead developer, NLP course research project</p>
         <p>Chain-of-thought spatial rationales before action tokens in LLaVA-1.5-7B (LoRA), trained on 10K synthesized pairs from BDD100K and BDD-X. Action accuracy rose from <span class="metric num">51.0% to 77.5%</span>, with minority STOP-class F1 of 0.75.</p>
+        <div class="proj-links">
+          <a class="chip" href="" target="_blank" rel="noopener">Slides</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Report</a>
+        </div>
       </div>
       <div class="entry">
         <div class="entry-head">
@@ -413,6 +424,11 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Team project, CSE363 Machine Learning</p>
         <p>Monocular depth estimation with epistemic and aleatoric uncertainty modeling, used to filter noisy depth artifacts under dynamic robot camera motion.</p>
+        <div class="proj-links">
+          <a class="chip" href="" target="_blank" rel="noopener">Slides</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Report</a>
+        </div>
       </div>
       <div class="entry">
         <div class="entry-head">
@@ -421,6 +437,11 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Core AI agent architecture engineer, UNIST AI-based Creative Problem Solving (AICP)</p>
         <p>Multi-agent pipeline built with Microsoft AutoGen for ingesting national statistical data (KOSIS), validating schemas, and synthesizing exploratory insights, with verification between retrieval, code-execution, and summarization agents to keep results factually consistent.</p>
+        <div class="proj-links">
+          <a class="chip" href="" target="_blank" rel="noopener">Slides</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Report</a>
+        </div>
       </div>
       <div class="entry">
         <div class="entry-head">
@@ -429,6 +450,11 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Team entry, 6th K-AI Manufacturing Data Analysis Competition (KAMP)</p>
         <p>Early prediction of injection-molding defects and prioritization of which parts to inspect first.</p>
+        <div class="proj-links">
+          <a class="chip" href="" target="_blank" rel="noopener">Slides</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Report</a>
+        </div>
       </div>
       <div class="entry">
         <div class="entry-head">
@@ -437,6 +463,11 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Team project, CSE333 Introduction to Human-Computer Interaction</p>
         <p>Switching between many desktops takes one swipe per step and is easy to overshoot. We designed a slingshot gesture instead: rest four fingers, pull back to aim, and release, where pull direction and length pick one of ten targets with a live aim preview and cancel. Working Mac prototype with per-frame finger tracking; a user study with about 30 participants is next.</p>
+        <div class="proj-links">
+          <a class="chip" href="" target="_blank" rel="noopener">Slides</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Report</a>
+        </div>
       </div>
       <div class="entry">
         <div class="entry-head">
@@ -445,6 +476,11 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Team project, CSE304 Introduction to Data Mining</p>
         <p>Found that overlays drawn by the inspection machines leak labels, that random splits overstate accuracy, and that each machine behaves as its own domain. Now testing whether detectors can learn from the machines&rsquo; own marks instead of human labels, and transfer to an unseen machine.</p>
+        <div class="proj-links">
+          <a class="chip" href="" target="_blank" rel="noopener">Slides</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Report</a>
+        </div>
       </div>
       <div class="entry">
         <div class="entry-head">
@@ -453,6 +489,11 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
         </div>
         <p class="sub">Team project, CSE36501 Deep Learning</p>
         <p>Models that point to what a sentence describes in an image or video, and say so when it is not there.</p>
+        <div class="proj-links">
+          <a class="chip" href="" target="_blank" rel="noopener">Slides</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Code</a>
+          <a class="chip" href="" target="_blank" rel="noopener">Report</a>
+        </div>
       </div>
     </section>
 
@@ -510,6 +551,9 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
     var n=order[(order.indexOf(getPref())+1)%3];try{localStorage.setItem('theme',n)}catch(e){} apply(n);
     render();
   })});
+
+  /* ---------- hide project buttons without a link ---------- */
+  document.querySelectorAll('.proj-links a').forEach(function(a){if(!a.getAttribute('href'))a.hidden=true});
 
   /* ---------- toast & copy ---------- */
   var toast=document.getElementById('toast'),tt;
