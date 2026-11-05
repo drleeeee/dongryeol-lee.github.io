@@ -374,14 +374,25 @@ footer{margin-top:80px;padding-top:18px;border-top:1px solid var(--line);font-si
           <span class="when">Dec 2025 to present</span>
         </div>
         <p class="sub">Undergraduate research intern, advised by Prof. Taehwan Kim</p>
-        <p>Research on embodied and multimodal AI: generative robot policies, preference alignment, vision-language-action models, world models, and building systems on top of open-source foundation models. I take projects from problem framing to a first-author paper.</p>
+        <p>I work on embodied AI and foundation models: how generative robot policies are trained, aligned, and tested in physics simulation, and how large pretrained models can be reused for robot decision-making.</p>
         <ul>
-          <li><strong>End-to-end first-author project.</strong> Led SafeCine from problem formulation through method, simulation pipeline, evaluation, and writing; accepted at the NeurIPS 2026 Robot Learning Workshop.</li>
-          <li><strong>Generative policies and alignment.</strong> Diffusion policies for language-conditioned camera drones, aligned with DPO-style preference optimization on physically mined, uncertainty-calibrated preferences, plus a generate, verify, and select runtime for safe execution.</li>
-          <li><strong>Building on foundation models.</strong> Fine-tuning vision-language models with LoRA, using pretrained image, video, and audio encoders as frozen backbones, and composing open-source models into multimodal pipelines instead of training from scratch.</li>
-          <li><strong>Simulation, evaluation, and infrastructure.</strong> Closed-loop evaluation across 8 scene families in Isaac Sim 4.5 / PhysX with bootstrap and McNemar testing (worst-case candidate clearance <span class="metric num">0.391 m to 0.501 m</span>), run through scripted, reproducible pipelines on shared GPU servers.</li>
-          <li><strong>Honest reporting.</strong> Showed where proposal-level gains failed to carry over to the full closed-loop system, which now drives my follow-up work.</li>
-          <li><strong>VLA and world-model study group.</strong> Prepared lab sessions on &pi;0, &pi;0.6 / RECAP, and NVIDIA Cosmos, covering vision-language-action and world foundation models.</li>
+          <li><strong>Aligning generative robot policies.</strong> Built RCL-CPM, which compares candidate trajectories under matched physical perturbations and keeps only pairs resolved by 95% Wilson bounds, then uses them for DPO-style alignment of a diffusion policy for language-conditioned camera drones. First-author paper at the NeurIPS 2026 Robot Learning Workshop.</li>
+          <li><strong>Simulation and closed-loop evaluation.</strong> Built evaluation across 8 scene families in Isaac Sim 4.5 / PhysX, with parent-stratified bootstrap and exact McNemar tests. Worst-case candidate clearance (q0.05) improved <span class="metric num">0.391 m to 0.501 m</span>.</li>
+          <li><strong>Reporting what did not work.</strong> The proposal-level gain did not carry over to the full closed-loop system. Studying where that gap opens has shaped how I think about evaluating embodied AI.</li>
+          <li><strong>Foundation models for robotics.</strong> Presented in-depth reviews of &pi;0, &pi;0.6 (RECAP), and NVIDIA Cosmos in the lab's vision-language-action study group, focusing on what each adds as a method versus as scale.</li>
+          <li><strong>Literature surveys.</strong> Mapped related work across aerial cinematography, constrained diffusion planning, safety-aware preference alignment, VLA models, and world models.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Applied AI on real-world data</h3>
+          <span class="when">2026</span>
+        </div>
+        <p class="sub">Team projects and competitions outside the lab</p>
+        <ul>
+          <li><strong>Manufacturing AI competition.</strong> Team entry in the 6th K-AI Manufacturing Data Analysis Competition (KAMP): early prediction of injection-molding defects and prioritizing which parts to inspect.</li>
+          <li><strong>X-ray inspection data mining</strong> (CSE304, in progress). Found that overlays drawn by the inspection machines leak labels, that random splits overstate accuracy, and that each machine behaves as its own domain. Studying whether detectors can learn from the machines' own marks instead of human labels.</li>
+          <li><strong>Multimodal grounding</strong> (CSE36501, in progress). Models that point to what a sentence describes in an image or video, and say so when it is not there.</li>
         </ul>
       </div>
     </section>
